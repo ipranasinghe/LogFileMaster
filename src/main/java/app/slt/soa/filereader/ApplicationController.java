@@ -10,4 +10,9 @@ public class ApplicationController{
     public String homePage(){
         return "index";
     }
+
+    @GetMapping("/login")
+    public  String login(){
+        return "login";
+    }
 }
