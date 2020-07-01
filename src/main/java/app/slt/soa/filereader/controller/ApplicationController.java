@@ -1,4 +1,4 @@
-package app.slt.soa.filereader;
+package app.slt.soa.filereader.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ApplicationController{
 
     @GetMapping("/index")
-    public String homePage(){
+    public String homePage() {
         return "index";
     }
 
     @GetMapping("/login")
-    public  String login(){
+    public String login() {
         return "login";
     }
+
 }
