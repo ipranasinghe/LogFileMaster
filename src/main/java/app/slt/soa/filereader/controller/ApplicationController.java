@@ -16,4 +16,9 @@ public class ApplicationController{
         return "login";
     }
 
+    @GetMapping("/logout")
+    public String logout(){
+        return "/login";
+    }
+
 }

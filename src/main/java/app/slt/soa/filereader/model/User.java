@@ -20,8 +20,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
 	private int id;
+
+	@Column(name = "username")
 	private String username;
+
+	@Column(name = "password")
 	private String password;
+
+	@Column(name = "active")
 	private boolean active;
+
+	@Column(name="roles")
 	private String roles;
 }
