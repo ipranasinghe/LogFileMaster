@@ -168,7 +168,7 @@ table tr th { color: #688a7e;}
 
 .login-img3-body{
 
-  background: url('../img/bg-1.jpg') no-repeat center center fixed;
+  background: url('../img/slt_img.jpeg') no-repeat center center fixed;
 
   -webkit-background-size: cover;
 
@@ -180,6 +180,20 @@ table tr th { color: #688a7e;}
 
 }
 
+
+.login-img4-body{
+
+    background: url('../img/telecom-hub.jpg') no-repeat center center fixed;
+
+    -webkit-background-size: cover;
+
+    -moz-background-size: cover;
+
+    -o-background-size: cover;
+
+    background-size: cover;
+
+}
 
 
 .login-form {
@@ -878,99 +892,100 @@ ul.sidebar-menu li.active a i {
 
 
 
-.mail-info, .mail-info:hover {
+/*.mail-info, .mail-info:hover {*/
 
-    margin: 3px 6px 0 0;
+/*    margin: 3px 6px 0 0;*/
 
-    font-size: 11px;
+/*    font-size: 11px;*/
 
-}
+/*}*/
 
-/*profile status bubbly*/
+/*!*profile status bubbly*!*/
 
-.online-profile li a i {
+/*.online-profile li a i {*/
 
-    position: relative;
+/*    position: relative;*/
 
-    left: -12px;
+/*    left: -12px;*/
 
-    top: -10px;
+/*    top: -10px;*/
 
-}
+/*}*/
 
-.online-profile li a span i {
+/*.online-profile li a span i {*/
 
-    position: relative;
+/*    position: relative;*/
 
-    top: 10px;
+/*    top: 10px;*/
 
-}
+/*}*/
 
-/*chat-*/
+/*!*chat-*!*/
 
 
 
-.chat-online-profile li a i {
+/*.chat-online-profile li a i {*/
 
-    position: relative;
+/*    position: relative;*/
 
-    left: -12px;
+/*    left: -12px;*/
 
-    top: -10px;
+/*    top: -10px;*/
 
-}
+/*}*/
 
-.chat-online-profile li a span i {
+/*.chat-online-profile li a span i {*/
 
-    position: relative;
+/*    position: relative;*/
 
-    top: 10px;
+/*    top: 10px;*/
 
-}
+/*}*/
 
-.chat-online-profile li a{
+/*.chat-online-profile li a{*/
 
-    border-bottom: 1px solid #D7D7D7;
+/*    border-bottom: 1px solid #D7D7D7;*/
 
-}
+/*}*/
 
-.chat-online-profile li a:hover, .chat-online-profile li a:focus, .chat-online-profile li a:active{
+/*.chat-online-profile li a:hover, .chat-online-profile li a:focus, .chat-online-profile li a:active{*/
 
-    background: #eeeeee !important;
+/*    background: #eeeeee !important;*/
 
-    border-bottom: 1px solid #688a7e !important;
+/*    border-bottom: 1px solid #688a7e !important;*/
 
-}
+/*}*/
 
-.chat-online-profile li a:hover span i,.chat-online-profile li a:focus span i,.chat-online-profile li a:active span i{
+/*.chat-online-profile li a:hover span i,.chat-online-profile li a:focus span i,.chat-online-profile li a:active span i{*/
 
-    color: #688a7e;
+/*    color: #688a7e;*/
 
-}
+/*}*/
 
-.right-chat-panel{
+/*.right-chat-panel{*/
 
-    max-height: 600px;
+/*    max-height: 600px;*/
 
-}
+/*}*/
 
-.compose-mail{
+/*.compose-mail{*/
 
-    width: 95%;
+/*    width: 95%;*/
 
-    font-size: 16px;
+/*    font-size: 16px;*/
 
-    border-radius: 0;
+/*    border-radius: 0;*/
 
-}
+/*}*/
 
 /*main content*/
 
 
 
 #main-content {
-
+    /*change 180px*/
     margin-left: 180px;
+    margin-right: 0px;
 
 }
 

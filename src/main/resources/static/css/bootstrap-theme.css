@@ -377,6 +377,15 @@ cite {
 }
 .text-right {
   text-align: right;
+
+
+}
+
+.text-corner{
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  font-size: 18px;
 }
 .text-center {
   text-align: center;
