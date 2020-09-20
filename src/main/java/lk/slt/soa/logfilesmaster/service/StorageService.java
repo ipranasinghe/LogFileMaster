@@ -1,4 +1,4 @@
-package lk.slt.soa.logfilesmaster.storage;
+package lk.slt.soa.logfilesmaster.service;
 
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;

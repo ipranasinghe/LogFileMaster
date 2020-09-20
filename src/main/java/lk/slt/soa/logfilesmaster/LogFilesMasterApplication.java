@@ -1,7 +1,7 @@
 package lk.slt.soa.logfilesmaster;
 
 import lk.slt.soa.logfilesmaster.storage.StorageProperties;
-import lk.slt.soa.logfilesmaster.storage.StorageService;
+import lk.slt.soa.logfilesmaster.service.StorageService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
