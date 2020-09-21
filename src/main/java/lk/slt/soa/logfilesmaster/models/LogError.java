@@ -1,11 +1,8 @@
 package lk.slt.soa.logfilesmaster.models;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
 public class LogError {
+
     private int id;
 
     private String payloadID;
@@ -13,4 +10,41 @@ public class LogError {
     private String orderNumber;
 
     private String errorDescription;
+
+    public void setPayloadID(String payloadID) {
+        this.payloadID = payloadID;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public void setErrorDescription(String errorDescription) {
+        this.errorDescription = errorDescription;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getPayloadID() {
+        return payloadID;
+    }
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public String getErrorDescription() {
+        return errorDescription;
+    }
+
+    public LogError(String payloadID, String orderNumber, String errorDescription) {
+        this.payloadID = payloadID;
+        this.orderNumber = orderNumber;
+        this.errorDescription = errorDescription;
+    }
+
+    public LogError() {
+    }
 }

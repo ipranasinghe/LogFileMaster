@@ -3,6 +3,7 @@ package lk.slt.soa.logfilesmaster.service;
 import com.sun.istack.NotNull;
 import lk.slt.soa.logfilesmaster.models.LogError;
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,31 +11,33 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class LogErrorService {
 
     public List<LogError> getAllLogErrors(@NotNull Resource resource){
         List<LogError> logErrors = new ArrayList<>();
 
-//        try {
-//            var file = resource.getFile();
-//            try (BufferedReader infile = new BufferedReader(new FileReader(file))) {
-//                try {
-//                    while ((textLine = infile.readLine()) != null) {
-//
-//                        if (searchError(textLine)) {
-//                            CreateModel modelGenerator = new CreateModel();
-//                            ErrorEntity errorEntity = modelGenerator.createEntityData(textLine);
-//                            logService.addLogData(errorEntity);
-//                        }
-//                    }
-//
-//                } finally {
-//                    infile.close();
-//                }
-//            }
-//        } catch (IOException io) {
-//
-//        }
+        String textLine = null;
+
+        try {
+            var file = resource.getFile();
+            try (BufferedReader infile = new BufferedReader(new FileReader(file))) {
+
+                while ((textLine = infile.readLine()) != null) {
+
+                    if (isError(textLine)) {
+                        LogError error = new LogError();
+                        error.setPayloadID(getPayLoadID(textLine));
+                        error.setOrderNumber(getOrderNumber(textLine));
+                        error.setErrorDescription(getErrorDescription(textLine));
+
+                        logErrors.add(error);
+                    }
+                }
+            }
+        } catch (IOException io) {
+//            log4j note
+        }
 
         return logErrors;
     }

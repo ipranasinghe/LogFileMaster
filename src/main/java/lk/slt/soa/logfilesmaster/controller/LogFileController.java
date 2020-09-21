@@ -20,7 +20,7 @@ public class LogFileController {
     public Model GetLogFileErrors(Model model) {
 
         List<LogError> errorList = logFileService.GetAllLogErrors();
-        model.addAttribute("errorList",errorList);
+        model.addAttribute("errorList", errorList);
         return model;
     }
 }
