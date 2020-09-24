@@ -1,7 +1,7 @@
-package lk.slt.soa.logfilesmaster.controller;
+package lk.slt.security.logfilemaster.controller;
 
-import lk.slt.soa.logfilesmaster.exceptions.StorageFileNotFoundException;
-import lk.slt.soa.logfilesmaster.service.StorageService;
+import lk.slt.security.logfilemaster.exception.StorageFileNotFoundException;
+import lk.slt.security.logfilemaster.services.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;

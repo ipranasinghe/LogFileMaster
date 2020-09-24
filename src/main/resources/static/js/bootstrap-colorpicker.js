@@ -506,9 +506,9 @@ _jquery2.default.fn[plugin] = function (option) {
       } else if (_jquery2.default.isFunction(inst[option])) {
         returnValue = inst[option].apply(inst, apiArgs);
       } else {
-        // its a property ?
+        // its a properties ?
         if (apiArgs.length) {
-          // set property
+          // set properties
           inst[option] = apiArgs[0];
         }
         returnValue = inst[option];
@@ -2859,8 +2859,8 @@ tinycolor.readability = function(color1, color2) {
 // `isReadable`
 // Ensure that foreground and background color combinations meet WCAG2 guidelines.
 // The third argument is an optional Object.
-//      the 'level' property states 'AA' or 'AAA' - if missing or invalid, it defaults to 'AA';
-//      the 'size' property states 'large' or 'small' - if missing or invalid, it defaults to 'small'.
+//      the 'level' properties states 'AA' or 'AAA' - if missing or invalid, it defaults to 'AA';
+//      the 'size' properties states 'large' or 'small' - if missing or invalid, it defaults to 'small'.
 // If the entire object is absent, isReadable defaults to {level:"AA",size:"small"}.
 
 // *Example*

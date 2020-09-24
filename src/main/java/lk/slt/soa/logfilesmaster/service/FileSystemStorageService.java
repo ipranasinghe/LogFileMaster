@@ -1,7 +1,7 @@
 package lk.slt.soa.logfilesmaster.service;
 
-import lk.slt.soa.logfilesmaster.exceptions.StorageException;
-import lk.slt.soa.logfilesmaster.exceptions.StorageFileNotFoundException;
+import lk.slt.soa.logfilesmaster.storage.StorageException;
+import lk.slt.soa.logfilesmaster.storage.StorageFileNotFoundException;
 import lk.slt.soa.logfilesmaster.storage.StorageProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -21,7 +21,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
 
 @Service
-public class FileSystemStorageService implements StorageService {
+public class FileSystemStorageService implements StorageProperties.StorageService {
 
     private final Path rootLocation;
 

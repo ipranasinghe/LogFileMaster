@@ -1,4 +1,4 @@
-package lk.slt.soa.logfilesmaster.exceptions;
+package lk.slt.security.logfilemaster.exception;
 
 public class StorageException extends RuntimeException {
 

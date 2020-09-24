@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.core.io.Resource;
 
+import java.io.ByteArrayInputStream;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,4 +35,5 @@ public class LogFileService {
 
         return file;
     }
+
 }

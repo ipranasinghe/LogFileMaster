@@ -183,7 +183,7 @@
     /*!
       * ### Assertion.includeStack
       *
-      * User configurable property, influences whether stack trace
+      * User configurable properties, influences whether stack trace
       * is included in Assertion error message. Default of false
       * suppresses stack trace in the error message
       *
@@ -345,7 +345,7 @@
        *
        *     expect(foo).to.not.equal('bar');
        *     expect(goodFn).to.not.throw(Error);
-       *     expect({ foo: 'baz' }).to.have.property('foo')
+       *     expect({ foo: 'baz' }).to.have.properties('foo')
        *       .and.not.equal('bar');
        *
        * @name not
@@ -360,11 +360,11 @@
        * ### .deep
        *
        * Sets the `deep` flag, later used by the `equal` and
-       * `property` assertions.
+       * `properties` assertions.
        *
        *     expect(foo).to.deep.equal({ bar: 'baz' });
        *     expect({ foo: { bar: { baz: 'quux' } } })
-       *       .to.have.deep.property('foo.bar.baz', 'quux');
+       *       .to.have.deep.properties('foo.bar.baz', 'quux');
        *
        * @name deep
        * @api public
@@ -417,7 +417,7 @@
       /**
        * ### .include(value)
        *
-       * The `include` and `contain` assertions can be used as either property
+       * The `include` and `contain` assertions can be used as either properties
        * based language chains or as methods to assert the inclusion of an object
        * in an array or a substring in a string. When used as language chains,
        * they toggle the `contain` flag for the `keys` assertion.
@@ -583,7 +583,7 @@
        * ### .empty
        *
        * Asserts that the target's length is `0`. For arrays, it checks
-       * the `length` property. For objects, it gets the count of
+       * the `length` properties. For objects, it gets the count of
        * enumerable keys.
        *
        *     expect([]).to.be.empty;
@@ -876,17 +876,17 @@
       Assertion.addMethod('instanceOf', assertInstanceOf);
 
       /**
-       * ### .property(name, [value])
+       * ### .properties(name, [value])
        *
-       * Asserts that the target has a property `name`, optionally asserting that
-       * the value of that property is strictly equal to  `value`.
+       * Asserts that the target has a properties `name`, optionally asserting that
+       * the value of that properties is strictly equal to  `value`.
        * If the `deep` flag is set, you can use dot- and bracket-notation for deep
        * references into objects and arrays.
        *
        *     // simple referencing
        *     var obj = { foo: 'bar' };
-       *     expect(obj).to.have.property('foo');
-       *     expect(obj).to.have.property('foo', 'bar');
+       *     expect(obj).to.have.properties('foo');
+       *     expect(obj).to.have.properties('foo', 'bar');
        *
        *     // deep referencing
        *     var deepObj = {
@@ -894,11 +894,11 @@
        *       , teas: [ 'chai', 'matcha', { tea: 'konacha' } ]
        *     };
 
-       *     expect(deepObj).to.have.deep.property('green.tea', 'matcha');
-       *     expect(deepObj).to.have.deep.property('teas[1]', 'matcha');
-       *     expect(deepObj).to.have.deep.property('teas[2].tea', 'konacha');
+       *     expect(deepObj).to.have.deep.properties('green.tea', 'matcha');
+       *     expect(deepObj).to.have.deep.properties('teas[1]', 'matcha');
+       *     expect(deepObj).to.have.deep.properties('teas[2].tea', 'konacha');
        *
-       * You can also use an array as the starting point of a `deep.property`
+       * You can also use an array as the starting point of a `deep.properties`
        * assertion, or traverse nested arrays.
        *
        *     var arr = [
@@ -908,36 +908,36 @@
        *         , { tea: 'konacha' } ]
        *     ];
        *
-       *     expect(arr).to.have.deep.property('[0][1]', 'matcha');
-       *     expect(arr).to.have.deep.property('[1][2].tea', 'konacha');
+       *     expect(arr).to.have.deep.properties('[0][1]', 'matcha');
+       *     expect(arr).to.have.deep.properties('[1][2].tea', 'konacha');
        *
-       * Furthermore, `property` changes the subject of the assertion
-       * to be the value of that property from the original object. This
-       * permits for further chainable assertions on that property.
+       * Furthermore, `properties` changes the subject of the assertion
+       * to be the value of that properties from the original object. This
+       * permits for further chainable assertions on that properties.
        *
-       *     expect(obj).to.have.property('foo')
+       *     expect(obj).to.have.properties('foo')
        *       .that.is.a('string');
-       *     expect(deepObj).to.have.property('green')
+       *     expect(deepObj).to.have.properties('green')
        *       .that.is.an('object')
        *       .that.deep.equals({ tea: 'matcha' });
-       *     expect(deepObj).to.have.property('teas')
+       *     expect(deepObj).to.have.properties('teas')
        *       .that.is.an('array')
-       *       .with.deep.property('[2]')
+       *       .with.deep.properties('[2]')
        *         .that.deep.equals({ tea: 'konacha' });
        *
        * @name property
-       * @alias deep.property
+       * @alias deep.properties
        * @param {String} name
        * @param {Mixed} value (optional)
        * @param {String} message _optional_
-       * @returns value of property for chaining
+       * @returns value of properties for chaining
        * @api public
        */
 
       Assertion.addMethod('property', function (name, val, msg) {
         if (msg) flag(this, 'message', msg);
 
-        var descriptor = flag(this, 'deep') ? 'deep property ' : 'property '
+        var descriptor = flag(this, 'deep') ? 'deep properties ' : 'properties '
           , negate = flag(this, 'negate')
           , obj = flag(this, 'object')
           , value = flag(this, 'deep')
@@ -973,7 +973,7 @@
       /**
        * ### .ownProperty(name)
        *
-       * Asserts that the target has an own property `name`.
+       * Asserts that the target has an own properties `name`.
        *
        *     expect('test').to.have.ownProperty('length');
        *
@@ -989,8 +989,8 @@
         var obj = flag(this, 'object');
         this.assert(
             obj.hasOwnProperty(name)
-          , 'expected #{this} to have own property ' + _.inspect(name)
-          , 'expected #{this} to not have own property ' + _.inspect(name)
+          , 'expected #{this} to have own properties ' + _.inspect(name)
+          , 'expected #{this} to not have own properties ' + _.inspect(name)
         );
       }
 
@@ -1000,14 +1000,14 @@
       /**
        * ### .length(value)
        *
-       * Asserts that the target's `length` property has
+       * Asserts that the target's `length` properties has
        * the expected value.
        *
        *     expect([ 1, 2, 3]).to.have.length(3);
        *     expect('foobar').to.have.length(6);
        *
        * Can also be used as a chain precursor to a value
-       * comparison for the length property.
+       * comparison for the length properties.
        *
        *     expect('foo').to.have.length.above(2);
        *     expect([ 1, 2, 3 ]).to.have.length.above(2);
@@ -2080,15 +2080,15 @@
       };
 
       /**
-       * ### .property(object, property, [message])
+       * ### .properties(object, properties, [message])
        *
-       * Asserts that `object` has a property named by `property`.
+       * Asserts that `object` has a properties named by `properties`.
        *
-       *     assert.property({ tea: { green: 'matcha' }}, 'tea');
+       *     assert.properties({ tea: { green: 'matcha' }}, 'tea');
        *
        * @name property
        * @param {Object} object
-       * @param {String} property
+       * @param {String} properties
        * @param {String} message
        * @api public
        */
@@ -2098,15 +2098,15 @@
       };
 
       /**
-       * ### .notProperty(object, property, [message])
+       * ### .notProperty(object, properties, [message])
        *
-       * Asserts that `object` does _not_ have a property named by `property`.
+       * Asserts that `object` does _not_ have a properties named by `properties`.
        *
        *     assert.notProperty({ tea: { green: 'matcha' }}, 'coffee');
        *
        * @name notProperty
        * @param {Object} object
-       * @param {String} property
+       * @param {String} properties
        * @param {String} message
        * @api public
        */
@@ -2116,16 +2116,16 @@
       };
 
       /**
-       * ### .deepProperty(object, property, [message])
+       * ### .deepProperty(object, properties, [message])
        *
-       * Asserts that `object` has a property named by `property`, which can be a
+       * Asserts that `object` has a properties named by `properties`, which can be a
        * string using dot- and bracket-notation for deep reference.
        *
        *     assert.deepProperty({ tea: { green: 'matcha' }}, 'tea.green');
        *
        * @name deepProperty
        * @param {Object} object
-       * @param {String} property
+       * @param {String} properties
        * @param {String} message
        * @api public
        */
@@ -2135,16 +2135,16 @@
       };
 
       /**
-       * ### .notDeepProperty(object, property, [message])
+       * ### .notDeepProperty(object, properties, [message])
        *
-       * Asserts that `object` does _not_ have a property named by `property`, which
+       * Asserts that `object` does _not_ have a properties named by `properties`, which
        * can be a string using dot- and bracket-notation for deep reference.
        *
        *     assert.notDeepProperty({ tea: { green: 'matcha' }}, 'tea.oolong');
        *
        * @name notDeepProperty
        * @param {Object} object
-       * @param {String} property
+       * @param {String} properties
        * @param {String} message
        * @api public
        */
@@ -2154,16 +2154,16 @@
       };
 
       /**
-       * ### .propertyVal(object, property, value, [message])
+       * ### .propertyVal(object, properties, value, [message])
        *
-       * Asserts that `object` has a property named by `property` with value given
+       * Asserts that `object` has a properties named by `properties` with value given
        * by `value`.
        *
        *     assert.propertyVal({ tea: 'is good' }, 'tea', 'is good');
        *
        * @name propertyVal
        * @param {Object} object
-       * @param {String} property
+       * @param {String} properties
        * @param {Mixed} value
        * @param {String} message
        * @api public
@@ -2174,16 +2174,16 @@
       };
 
       /**
-       * ### .propertyNotVal(object, property, value, [message])
+       * ### .propertyNotVal(object, properties, value, [message])
        *
-       * Asserts that `object` has a property named by `property`, but with a value
+       * Asserts that `object` has a properties named by `properties`, but with a value
        * different from that given by `value`.
        *
        *     assert.propertyNotVal({ tea: 'is good' }, 'tea', 'is bad');
        *
        * @name propertyNotVal
        * @param {Object} object
-       * @param {String} property
+       * @param {String} properties
        * @param {Mixed} value
        * @param {String} message
        * @api public
@@ -2194,17 +2194,17 @@
       };
 
       /**
-       * ### .deepPropertyVal(object, property, value, [message])
+       * ### .deepPropertyVal(object, properties, value, [message])
        *
-       * Asserts that `object` has a property named by `property` with value given
-       * by `value`. `property` can use dot- and bracket-notation for deep
+       * Asserts that `object` has a properties named by `properties` with value given
+       * by `value`. `properties` can use dot- and bracket-notation for deep
        * reference.
        *
        *     assert.deepPropertyVal({ tea: { green: 'matcha' }}, 'tea.green', 'matcha');
        *
        * @name deepPropertyVal
        * @param {Object} object
-       * @param {String} property
+       * @param {String} properties
        * @param {Mixed} value
        * @param {String} message
        * @api public
@@ -2215,17 +2215,17 @@
       };
 
       /**
-       * ### .deepPropertyNotVal(object, property, value, [message])
+       * ### .deepPropertyNotVal(object, properties, value, [message])
        *
-       * Asserts that `object` has a property named by `property`, but with a value
-       * different from that given by `value`. `property` can use dot- and
+       * Asserts that `object` has a properties named by `properties`, but with a value
+       * different from that given by `value`. `properties` can use dot- and
        * bracket-notation for deep reference.
        *
        *     assert.deepPropertyNotVal({ tea: { green: 'matcha' }}, 'tea.green', 'konacha');
        *
        * @name deepPropertyNotVal
        * @param {Object} object
-       * @param {String} property
+       * @param {String} properties
        * @param {Mixed} value
        * @param {String} message
        * @api public
@@ -2238,7 +2238,7 @@
       /**
        * ### .lengthOf(object, length, [message])
        *
-       * Asserts that `object` has a `length` property with the expected value.
+       * Asserts that `object` has a `length` properties with the expected value.
        *
        *     assert.lengthOf([1,2,3], 3, 'array has length of 3');
        *     assert.lengthOf('foobar', 5, 'string has length of 6');
@@ -2476,7 +2476,7 @@
 
   require.register("chai/utils/addChainableMethod.js", function(module, exports, require){
     /*!
-     * Chai - addChainingMethod utility
+     * Chai - addChainingMethod utilities
      * Copyright(c) 2012 Jake Luer <jake@alogicalparadox.com>
      * MIT Licensed
      */
@@ -2510,7 +2510,7 @@
      * @param {Object} ctx object to which the method is added
      * @param {String} name of method to add
      * @param {Function} method function to be used for `name`, when called
-     * @param {Function} chainingBehavior function to be called every time the property is accessed
+     * @param {Function} chainingBehavior function to be called every time the properties is accessed
      * @name addChainableMethod
      * @api public
      */
@@ -2550,7 +2550,7 @@
 
   require.register("chai/utils/addMethod.js", function(module, exports, require){
     /*!
-     * Chai - addMethod utility
+     * Chai - addMethod utilities
      * Copyright(c) 2012 Jake Luer <jake@alogicalparadox.com>
      * MIT Licensed
      */
@@ -2591,7 +2591,7 @@
 
   require.register("chai/utils/addProperty.js", function(module, exports, require){
     /*!
-     * Chai - addProperty utility
+     * Chai - addProperty utilities
      * Copyright(c) 2012 Jake Luer <jake@alogicalparadox.com>
      * MIT Licensed
      */
@@ -2599,7 +2599,7 @@
     /**
      * ### addProperty (ctx, name, getter)
      *
-     * Adds a property to the prototype of an object.
+     * Adds a properties to the prototype of an object.
      *
      *     utils.addProperty(chai.Assertion.prototype, 'foo', function () {
      *       var obj = utils.flag(this, 'object');
@@ -2614,8 +2614,8 @@
      *
      *     expect(myFoo).to.be.foo;
      *
-     * @param {Object} ctx object to which the property is added
-     * @param {String} name of property to add
+     * @param {Object} ctx object to which the properties is added
+     * @param {String} name of properties to add
      * @param {Function} getter function to be used for name
      * @name addProperty
      * @api public
@@ -2678,7 +2678,7 @@
       // determined by having the same number of owned properties (as verified
       // with Object.prototype.hasOwnProperty.call), the same set of keys
       // (although not necessarily the same order), equivalent values for every
-      // corresponding key, and an identical 'prototype' property. Note: this
+      // corresponding key, and an identical 'prototype' properties. Note: this
       // accounts for both named and indexed properties on Arrays.
       } else {
         return objEquiv(actual, expected);
@@ -2696,7 +2696,7 @@
     function objEquiv(a, b) {
       if (isUndefinedOrNull(a) || isUndefinedOrNull(b))
         return false;
-      // an identical 'prototype' property.
+      // an identical 'prototype' properties.
       if (a.prototype !== b.prototype) return false;
       //~~~I've managed to break Object.keys through screwy arguments passing.
       //   Converting to array solves the problem.
@@ -2740,7 +2740,7 @@
 
   require.register("chai/utils/flag.js", function(module, exports, require){
     /*!
-     * Chai - flag utility
+     * Chai - flag utilities
      * Copyright(c) 2012 Jake Luer <jake@alogicalparadox.com>
      * MIT Licensed
      */
@@ -2776,7 +2776,7 @@
 
   require.register("chai/utils/getActual.js", function(module, exports, require){
     /*!
-     * Chai - getActual utility
+     * Chai - getActual utilities
      * Copyright(c) 2012 Jake Luer <jake@alogicalparadox.com>
      * MIT Licensed
      */
@@ -2799,7 +2799,7 @@
 
   require.register("chai/utils/getMessage.js", function(module, exports, require){
     /*!
-     * Chai - message composition utility
+     * Chai - message composition utilities
      * Copyright(c) 2012 Jake Luer <jake@alogicalparadox.com>
      * MIT Licensed
      */
@@ -2852,7 +2852,7 @@
 
   require.register("chai/utils/getName.js", function(module, exports, require){
     /*!
-     * Chai - getName utility
+     * Chai - getName utilities
      * Copyright(c) 2012 Jake Luer <jake@alogicalparadox.com>
      * MIT Licensed
      */
@@ -2876,7 +2876,7 @@
 
   require.register("chai/utils/getPathValue.js", function(module, exports, require){
     /*!
-     * Chai - getPathValue utility
+     * Chai - getPathValue utilities
      * Copyright(c) 2012 Jake Luer <jake@alogicalparadox.com>
      * @see https://github.com/logicalparadox/filtr
      * MIT Licensed
@@ -2923,12 +2923,12 @@
      * Helper function used to parse string object
      * paths. Use in conjunction with `_getPathValue`.
      *
-     *      var parsed = parsePath('myobject.property.subprop');
+     *      var parsed = parsePath('myobject.properties.subprop');
      *
      * ### Paths:
      *
      * * Can be as near infinitely deep and nested
-     * * Arrays are also valid using the formal `myobject.document[3].property`.
+     * * Arrays are also valid using the formal `myobject.document[3].properties`.
      *
      * @param {String} path
      * @returns {Object} parsed
@@ -2994,19 +2994,19 @@
     var exports = module.exports = {};
 
     /*!
-     * test utility
+     * test utilities
      */
 
     exports.test = require('./test');
 
     /*!
-     * message utility
+     * message utilities
      */
 
     exports.getMessage = require('./getMessage');
 
     /*!
-     * actual utility
+     * actual utilities
      */
 
     exports.getActual = require('./getActual');
@@ -3024,19 +3024,19 @@
     exports.objDisplay = require('./objDisplay');
 
     /*!
-     * Flag utility
+     * Flag utilities
      */
 
     exports.flag = require('./flag');
 
     /*!
-     * Flag transferring utility
+     * Flag transferring utilities
      */
 
     exports.transferFlags = require('./transferFlags');
 
     /*!
-     * Deep equal utility
+     * Deep equal utilities
      */
 
     exports.eql = require('./eql');
@@ -3171,8 +3171,8 @@
       var keys = ctx.showHidden ? Object.getOwnPropertyNames(value) : visibleKeys;
 
       // Some type of object without properties can be shortcutted.
-      // In IE, errors have a single `stack` property, or if they are vanilla `Error`,
-      // a `stack` plus `description` property; ignore those for consistency.
+      // In IE, errors have a single `stack` properties, or if they are vanilla `Error`,
+      // a `stack` plus `description` properties; ignore those for consistency.
       if (keys.length === 0 || (isError(value) && (
           (keys.length === 1 && keys[0] === 'stack') ||
           (keys.length === 2 && keys[0] === 'description' && keys[1] === 'stack')
@@ -3406,7 +3406,7 @@
 
   require.register("chai/utils/objDisplay.js", function(module, exports, require){
     /*!
-     * Chai - flag utility
+     * Chai - flag utilities
      * Copyright(c) 2012 Jake Luer <jake@alogicalparadox.com>
      * MIT Licensed
      */
@@ -3454,7 +3454,7 @@
 
   require.register("chai/utils/overwriteMethod.js", function(module, exports, require){
     /*!
-     * Chai - overwriteMethod utility
+     * Chai - overwriteMethod utilities
      * Copyright(c) 2012 Jake Luer <jake@alogicalparadox.com>
      * MIT Licensed
      */
@@ -3509,7 +3509,7 @@
 
   require.register("chai/utils/overwriteProperty.js", function(module, exports, require){
     /*!
-     * Chai - overwriteProperty utility
+     * Chai - overwriteProperty utilities
      * Copyright(c) 2012 Jake Luer <jake@alogicalparadox.com>
      * MIT Licensed
      */
@@ -3517,7 +3517,7 @@
     /**
      * ### overwriteProperty (ctx, name, fn)
      *
-     * Overwites an already existing property getter and provides
+     * Overwites an already existing properties getter and provides
      * access to previous value. Must return function to use as getter.
      *
      *     utils.overwriteProperty(chai.Assertion.prototype, 'ok', function (_super) {
@@ -3540,8 +3540,8 @@
      *
      *     expect(myFoo).to.be.ok;
      *
-     * @param {Object} ctx object whose property is to be overwritten
-     * @param {String} name of property to overwrite
+     * @param {Object} ctx object whose properties is to be overwritten
+     * @param {String} name of properties to overwrite
      * @param {Function} getter function that returns a getter function to be used for name
      * @name overwriteProperty
      * @api public
@@ -3567,7 +3567,7 @@
 
   require.register("chai/utils/test.js", function(module, exports, require){
     /*!
-     * Chai - test utility
+     * Chai - test utilities
      * Copyright(c) 2012 Jake Luer <jake@alogicalparadox.com>
      * MIT Licensed
      */
@@ -3597,7 +3597,7 @@
 
   require.register("chai/utils/transferFlags.js", function(module, exports, require){
     /*!
-     * Chai - transferFlags utility
+     * Chai - transferFlags utilities
      * Copyright(c) 2012 Jake Luer <jake@alogicalparadox.com>
      * MIT Licensed
      */

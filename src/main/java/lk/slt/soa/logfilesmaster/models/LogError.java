@@ -1,6 +1,5 @@
 package lk.slt.soa.logfilesmaster.models;
 
-
 public class LogError {
 
     private int id;
@@ -39,12 +38,12 @@ public class LogError {
         return errorDescription;
     }
 
-    public LogError(String payloadID, String orderNumber, String errorDescription) {
+    public LogError() {
         this.payloadID = payloadID;
         this.orderNumber = orderNumber;
         this.errorDescription = errorDescription;
     }
 
-    public LogError() {
+    public LogError(int id, String payloadID, String orderNumber, String errorDescription) {
     }
 }

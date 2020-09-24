@@ -1798,7 +1798,7 @@ var baseConfig = {
     meridiemParse: defaultLocaleMeridiemParse
 };
 
-// internal storage for locale config files
+// internal properties for locale config files
 var locales = {};
 var localeFamilies = {};
 var globalLocale;

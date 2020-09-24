@@ -1,6 +1,4 @@
-package lk.slt.soa.logfilesmaster.exceptions;
-
-import lk.slt.soa.logfilesmaster.exceptions.StorageException;
+package lk.slt.security.logfilemaster.exception;
 
 public class StorageFileNotFoundException extends StorageException {
 
