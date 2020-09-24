@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class LogFileService {
+public class LogFileService implements FileService{
 
     final LogFileErrorRepository logfileErrorRepository;
 
@@ -27,6 +27,7 @@ public class LogFileService {
         this.errors = Collections.emptyList();
     }
 
+    @Override
     public List<ErrorEntity> getProcessedErrors() {
         if(this.errors.size() == 0){
             readLogFile();
@@ -35,7 +36,8 @@ public class LogFileService {
         return  this.errors;
     }
 
-    private void readLogFile() {
+    @Override
+    public void readLogFile() {
 
         LogFileReaderUtilities logFileReaderUtilities = new LogFileReaderUtilities();
 
@@ -69,5 +71,7 @@ public class LogFileService {
         {
             //out.println("Error reading the file");
         }
+
+        storageService.deleteAll();
     }
 }

@@ -4,6 +4,7 @@ import lk.slt.security.logfilemaster.model.ErrorEntity;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -76,13 +77,10 @@ public class ErrorExcelExporter {
         }
     }
 
-    public void export(HttpServletResponse response) throws IOException {
+    public Workbook export(){
         writeHeaderRow();
         writeDataRows();
-
-        ServletOutputStream outputStream = response.getOutputStream();
-        workbook.write(outputStream);
-        outputStream.close();
+        return workbook;
     }
 
 }
