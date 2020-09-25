@@ -30,10 +30,7 @@ import org.springframework.mock.web.MockMultipartFile;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * @author Dave Syer
- *
- */
+
 public class FileSystemStorageServiceTests {
 
 	private StorageProperties properties = new StorageProperties();

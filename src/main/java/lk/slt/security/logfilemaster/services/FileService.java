@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface FileService {
     List<ErrorEntity> getProcessedErrors();
-    public void readLogFile();
+    void readLogFile();
 
 }
