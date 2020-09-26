@@ -57,7 +57,7 @@ function SmartWizard(target, options) {
                 var li = $("<li></li>").append($("<a></a>").attr("href", "#" + s).append($("<label></label>").addClass("stepNumber").text(i + 1)).append(span));
                 ul.append(li);
             });
-            // (re)initialise the steps properties
+            // (re)initialise the steps property
             $this.steps = $(target).children("ul").children("li").children("a"); // Get all anchors
         }
         $this.target.children('ul').addClass("anchor");

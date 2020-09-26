@@ -508,7 +508,7 @@ var sinon = (function (buster) {
     var sinon = {
         wrapMethod: function wrapMethod(object, property, method) {
             if (!object) {
-                throw new TypeError("Should wrap properties of object");
+                throw new TypeError("Should wrap property of object");
             }
 
             if (typeof method != "function") {
@@ -518,7 +518,7 @@ var sinon = (function (buster) {
             var wrappedMethod = object[property];
 
             if (!isFunction(wrappedMethod)) {
-                throw new TypeError("Attempted to wrap " + (typeof wrappedMethod) + " properties " +
+                throw new TypeError("Attempted to wrap " + (typeof wrappedMethod) + " property " +
                                     property + " as function");
             }
 
@@ -1652,7 +1652,7 @@ var sinon = (function (buster) {
             if (stub.callArgPropsLast) {
                 msg = sinon.functionName(stub) +
                     " expected to yield to '" + stub.callArgPropsLast +
-                    "', but no object with such a properties was passed."
+                    "', but no object with such a property was passed."
             } else {
                 msg = sinon.functionName(stub) +
                             " expected to yield, but no callback was passed."
@@ -2430,7 +2430,7 @@ var sinon = (function (buster) {
 
                 if (typeof original != "function") {
                     if (!hasOwnProperty.call(object, property)) {
-                        throw new TypeError("Cannot stub non-existent own properties " + property);
+                        throw new TypeError("Cannot stub non-existent own property " + property);
                     }
 
                     object[property] = value;
