@@ -21,12 +21,12 @@ import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
 
 @Service
-public class LogFileStorageService implements StorageService {
+public class StorageServiceImpl implements StorageService {
 
     private final Path rootLocation;
 
     @Autowired
-    public LogFileStorageService(StorageProperties properties) {
+    public StorageServiceImpl(StorageProperties properties) {
         this.rootLocation = Paths.get(properties.getLocation());
     }
 

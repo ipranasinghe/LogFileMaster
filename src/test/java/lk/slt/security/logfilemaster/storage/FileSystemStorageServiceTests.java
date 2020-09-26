@@ -19,8 +19,7 @@ import java.util.Random;
 
 import lk.slt.security.logfilemaster.exception.StorageException;
 import lk.slt.security.logfilemaster.properties.StorageProperties;
-import lk.slt.security.logfilemaster.services.LogFileStorageService;
-import lk.slt.security.logfilemaster.services.StorageService;
+import lk.slt.security.logfilemaster.services.StorageServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -34,12 +33,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class FileSystemStorageServiceTests {
 
 	private StorageProperties properties = new StorageProperties();
-	private LogFileStorageService service;
+	private StorageServiceImpl service;
 
 	@BeforeEach
 	public void init() {
 		properties.setLocation("target/files/" + Math.abs(new Random().nextLong()));
-		service = new LogFileStorageService(properties);
+		service = new StorageServiceImpl(properties);
 		service.init();
 	}
 

@@ -2,7 +2,6 @@ package lk.slt.security.logfilemaster.controller;
 
 import lk.slt.security.logfilemaster.model.ErrorEntity;
 import lk.slt.security.logfilemaster.services.FileService;
-import lk.slt.security.logfilemaster.services.LogFileService;
 import lk.slt.security.logfilemaster.utilities.ErrorExcelExporter;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;

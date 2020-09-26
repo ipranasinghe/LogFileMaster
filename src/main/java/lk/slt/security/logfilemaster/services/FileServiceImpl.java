@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class LogFileService implements FileService{
+public class FileServiceImpl implements FileService{
 
     final LogFileErrorRepository logfileErrorRepository;
 
@@ -21,7 +21,7 @@ public class LogFileService implements FileService{
     public List<ErrorEntity> errors;
 
     @Autowired
-    public LogFileService(LogFileErrorRepository logfileErrorRepository, StorageService storageService) {
+    public FileServiceImpl(LogFileErrorRepository logfileErrorRepository, StorageService storageService) {
         this.logfileErrorRepository = logfileErrorRepository;
         this.storageService = storageService;
         this.errors = Collections.emptyList();
